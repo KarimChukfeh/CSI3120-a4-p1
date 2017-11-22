@@ -11,18 +11,27 @@ class Controller{
     $this->view = $view;
   }
 
-  function takeTurn($turn){
-    if($this->model->getMode() == "pve" and $turn == "O"){
-      $this->model->computerMove(); // Computer logic is in the model
+  function takeTurn($symbol){
+    if($this->model->getMode() == "pve" and $symbol == "O"){
+      $move = $this->model->getComputerMove(); // Computer logic is in the model
+      $this->view->printComputerMove($move, $symbol);
     }else{
       $move = $this->view->getPlayerMove();
-      $valid = $this->model->validMove($move);
-      if($valid){
-        echo "valid";
+      $valid = $this->model->availableCell($move);
+      while(!$valid){
+        echo "Invalid Input!\n";
+        $this->view->printBoard();
+        $this->view->printTurn($symbol);
+        $move = $this->view->getPlayerMove();
+        $valid = $this->model->availableCell($move);
       }
-      $board = $this->model->getBoard();
     }
-
+    $this->model->setCell($move, $symbol);
+    if($this->model->winCondition($symbol)){
+      $this->model->endGame($symbol);
+    }elseif ($this->model->tieCondition()) {
+      $this->model->endGame("tie");
+    }
   }
 
 }

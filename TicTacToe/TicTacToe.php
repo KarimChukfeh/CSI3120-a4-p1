@@ -49,8 +49,8 @@ class TicTacToe{
       $this->view->printBoard();
       $this->view->printTurn($this->model->getTurn());
       $this->controller->takeTurn($this->model->getTurn());
-      break;
     }
+    $this->view->printEndGame();
   }
 }
 

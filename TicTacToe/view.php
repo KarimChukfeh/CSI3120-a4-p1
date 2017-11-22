@@ -31,11 +31,26 @@ class View{
     echo "\n$symbol's turn\n";
   }
 
+  function printComputerMove($move, $symbol){
+    echo "The computer chooses to put $symbol in $move\n";
+  }
+
   function getPlayerMove(){
     echo "Select an available cell [1-9]\n";
     $handle = fopen ("php://stdin","r");
     $playerSelection = fgets($handle);
     return $playerSelection;
+  }
+
+  function printEndGame(){
+    $winner = $this->model->getWinner();
+    if($winner == "tie"){
+      echo "Game ended in a tie!\n";
+      $this->printBoard();
+    }else{
+      echo "$winner Wins !!\n";
+      $this->printBoard();
+    }
   }
 
 }
