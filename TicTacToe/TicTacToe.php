@@ -54,5 +54,9 @@ class TicTacToe{
   }
 }
 
+///////////////////
+// IT'S GO TIME ///
+///////////////////
+
 $game = new TicTacToe;
 $game->play();
