@@ -23,13 +23,15 @@ class Queens{
     $count = 0;
     while($queens<8){
       $candidate = rand(0, 63);
-      if($this->colCondition($candidate) and $this->rowCondition($candidate) and $this->diagConditionB($candidate)){
+      if($this->colCondition($candidate) and $this->rowCondition($candidate) and $this->diagConditionA($candidate)  and $this->diagConditionB($candidate)){
         $this->grid[$candidate] = "Q";
-        $queens ++;
+        $queens++;
       }
       $count++;
-      if($count > 300){
-        $this->resetGrid();
+      if($count > 500){
+        $this->shuffle();
+        $queens = 0;
+        $count = 0;
       }
     }
   }
@@ -44,7 +46,7 @@ class Queens{
     }
   }
 
-  function resetGrid(){
+  function shuffle(){
     $this->grid = array(
       '-', '-', '-', '-', '-', '-', '-', '-',
       '-', '-', '-', '-', '-', '-', '-', '-',
@@ -60,12 +62,13 @@ class Queens{
   function colCondition($candidate){
     $check = $candidate;
     while($check >= 0){
+      $temp = $check;
       $check = $check - 8;
     }
     $check = $check + 8;
 
     $colEnds = $check + 56;
-    for($check; $check<$colEnds; $check+=8){
+    for($check; $check<=$colEnds; $check+=8){
       if($this->grid[$check] != '-'){
         return false;
       }
@@ -101,7 +104,7 @@ class Queens{
     }
 
     $diagEndsA = $checkA;
-    while($diagEndsA < 64 and !($diagEndsA%8 == 0)){
+    while($diagEndsA < 63 and !(($diagEndsA+1)%8 == 0)){
       $diagEndsA = $diagEndsA + 9;
     }
 
@@ -110,12 +113,12 @@ class Queens{
         return false;
       }
     }
+    return true;
   }
-  function diagConditionB($candidate){
 
-    //---- checking this direction \  /////
+  function diagConditionB($candidate){
     $check = $candidate;
-    while($check > 0 and !($check %8 == 0)){
+    while($check >= 0 and !(($check+1) %8 == 0)){
       $temp = $check;
       $check = $check - 7;
     }
@@ -124,7 +127,7 @@ class Queens{
     }
 
     $diagEnds = $check;
-    while($diagEnds <= 63 and !($diagEnds %8 == 0)){
+    while($diagEnds < 63 and !($diagEnds %8 == 0)){
       $diagEnds = $diagEnds + 7;
     }
 
@@ -133,8 +136,6 @@ class Queens{
         return false;
       }
     }
-
-
     return true;
   }
 
