@@ -41,8 +41,10 @@ class Queens{
       if($cell%8 == 0){
         echo "\n";
       }
+      echo "[";
       echo $this->grid[$cell];
-      echo "   ";
+      echo "]";
+      echo " ";
     }
   }
 
