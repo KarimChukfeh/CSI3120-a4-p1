@@ -1,6 +1,6 @@
 <?php
 
-class View{
+class GameView{
 
   function __construct(){
 

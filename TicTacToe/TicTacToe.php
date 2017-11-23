@@ -1,27 +1,28 @@
 <?php
+
+include('mvc/GameModel.php');
+include('mvc/GameView.php');
+include('mvc/GameController.php');
+
 /*
-  The TicTacToe class contains instances of the model/view/controller
-  required to play Tic Tac Toe in console
+  The TicTacToe class contains instances of the required classses
+  to play Tic Tac Toe in console.
 */
-include('model.php');
-include('view.php');
-include('controller.php');
 class TicTacToe{
   protected $winner;
 
   function __construct(){
 
     // Ask the user for a game mode
-    $gameMode = View::getUserModeSelection();
+    $gameMode = GameView::getUserModeSelection();
 
     // controller initiation
-    $controller = new Controller(new Model($gameMode), new View);
+    $controller = new GameController(new GameModel($gameMode), new GameView);
 
     // Let's play
     $this->winner = $controller->play();
   }
 }
 
-
-// It's go time
+// Main
 new TicTacToe;

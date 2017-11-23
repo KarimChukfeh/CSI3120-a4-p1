@@ -1,6 +1,6 @@
 <?php
 
-class Controller{
+class GameController{
 
   protected $model;
   protected $view;
