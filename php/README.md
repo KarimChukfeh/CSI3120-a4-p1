@@ -14,7 +14,7 @@ php TicTacToe/TicTacToe.php
 php Queens/Queens.php
 ```
 
-# [3] Estimating Pi circle/square random point ration in php
+# [3] Estimating Pi using random point circle to square ratio in php
 ```bash
 php Pi/Pi.php
 ```
