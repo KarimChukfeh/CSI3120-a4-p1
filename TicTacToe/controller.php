@@ -23,7 +23,7 @@ class Controller{
       // Play next turn
       $this->takeTurn();
     }
-    
+
     // Show the end score
     $this->view->printEndGame($this->model->getWinner(), $this->model->getBoard());
 
@@ -36,26 +36,33 @@ class Controller{
     $symbol = $this->model->currentTurn();
     $mode = $this->model->getMode();
 
+    // Check if it's computer's turn
     if($mode == "pve" and $symbol == "O"){
       // Computer logic is in the model
-      $move = $this->model->getComputerMove();
+      $cellNumber = $this->model->getComputerMove();
       // Show computer decision
-      $this->view->printComputerMove($move, $symbol);
-    }else{
+      $this->view->printComputerMove($cellNumber, $symbol);
+    }
+
+    // Player turn
+    else{
+
       // Prompt current player to select a cell
-      $move = $this->view->getPlayerMove();
+      $cellNumber = $this->view->getPlayerMove();
+
       // Check if choice is valid
-      $valid = $this->model->availableCell($move);
+      $valid = $this->model->availableCell($cellNumber);
       while(!$valid){
         echo "Invalid Input!\n";
         $this->view->printTurn($symbol, $this->model->getBoard());
-        $move = $this->view->getPlayerMove();
-        $valid = $this->model->availableCell($move);
+        $cellNumber = $this->view->getPlayerMove();
+        $valid = $this->model->availableCell($cellNumber);
       }
+
     }
 
-    // Change the board
-    $this->model->setCell($move, $symbol);
+    // Change the board based on last action
+    $this->model->markCell($cellNumber, $symbol);
 
     // Check if game is over
     if($this->model->winCondition($symbol)){

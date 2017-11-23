@@ -57,7 +57,7 @@ class Model{
     return $valid;
   }
 
-  function setCell($cell, $turn){
+  function markCell($cell, $turn){
     $key = (int)$cell - 1;
     $row = $this->map[$key][0];
     $col = $this->map[$key][1];
@@ -78,25 +78,27 @@ class Model{
     $opSymbol = "X";
     foreach ($this->board as &$row) {
       foreach ($row as $cell) {
-        if($cell!="X" and $cell!="O"){
-          $original = $cell;
+
+        // Check if valid cell
+        if($cell !="X" and $cell !="O"){
+          $original = $cell; // need it later
 
           // If it's a winning move then do it
-          $this->setCell($cell, $symbol);
+          $this->markCell($cell, $symbol);
           if($this->winCondition($symbol)){
-            $this->setCell($cell, $original);
+            $this->markCell($cell, $original);
             return $cell;
           }else{ // Original state
-            $this->setCell($cell, $original);
+            $this->markCell($cell, $original);
           }
 
           // If it's a blocking move do it
-          $this->setCell($cell, $opSymbol);
+          $this->markCell($cell, $opSymbol);
           if ($this->winCondition($opSymbol)){
-            $this->setCell($cell, $original);
+            $this->markCell($cell, $original);
             return $cell;
           }else{ // Original state
-            $this->setCell($cell, $original);
+            $this->markCell($cell, $original);
           }
 
         }
