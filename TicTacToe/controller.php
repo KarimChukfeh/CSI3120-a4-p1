@@ -4,7 +4,6 @@ class Controller{
 
   protected $model;
   protected $view;
-  protected $map;
 
   function __construct($model, $view){
     $this->model = $model;
