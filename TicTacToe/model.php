@@ -46,7 +46,7 @@ class Model{
 
   function availableCell($cell){
     $valid = false;
-    $key = $cell - 1;
+    $key = (int)$cell - 1;
     if($this->map[$key]){
       $row = $this->map[$key][0];
       $col = $this->map[$key][1];
@@ -58,7 +58,7 @@ class Model{
   }
 
   function setCell($cell, $turn){
-    $key = $cell - 1;
+    $key = (int)$cell - 1;
     $row = $this->map[$key][0];
     $col = $this->map[$key][1];
     $this->board[$row][$col] = $turn;

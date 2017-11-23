@@ -8,6 +8,34 @@ class View{
     $this->model = $model;
   }
 
+  /*
+    prompts the user to choose Player vs Player (pvp)
+    or Player vs Environment (pve)
+  */
+  static function getUserModeSelection(){
+    // Welcome message
+    echo "Welcome to TicTacToe in PHP\n";
+    echo "Please type in the mode you'd like to play\n";
+    echo "1. Player [X] vs Player [O] \n";
+    echo "2. Player [X] vs Computer [O] \n";
+
+    // Mode selection
+    $modeInput = 0;
+    echo "Mode: ";
+    $handle = fopen ("php://stdin","r");
+    $modeInput = fgets($handle);
+    while(! (($modeInput == 1) or ($modeInput == 2)) ){
+      echo "Invalid input.\n";
+      echo "Mode: \n";
+      echo "1. Player [X] vs Player [O] \n";
+      echo "2. Player [X] vs Computer [O] \n";
+      $handle = fopen ("php://stdin","r");
+      $modeInput = fgets($handle);
+    }
+    echo "\n";
+    return $modeInput;
+  }
+
   function printGameMode(){
     $mode = $this->model->getMode();
     if($mode == "pvp"){
