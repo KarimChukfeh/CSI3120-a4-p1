@@ -23,8 +23,12 @@ class Controller{
       // Play next turn
       $this->takeTurn();
     }
+    
     // Show the end score
     $this->view->printEndGame($this->model->getWinner(), $this->model->getBoard());
+
+    // Return winner
+    return $this->model->getWinner();
   }
 
   function takeTurn(){
