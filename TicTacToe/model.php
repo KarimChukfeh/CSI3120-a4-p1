@@ -125,7 +125,7 @@ class Model{
     return $this->board;
   }
 
-  function getTurn(){
+  function currentTurn(){
     return $this->turn;
   }
 

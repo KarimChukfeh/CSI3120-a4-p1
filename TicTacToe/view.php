@@ -2,10 +2,8 @@
 
 class View{
 
-  protected $model;
+  function __construct(){
 
-  function __construct($model){
-    $this->model = $model;
   }
 
   /*
@@ -36,8 +34,7 @@ class View{
     return $modeInput;
   }
 
-  function printGameMode(){
-    $mode = $this->model->getMode();
+  function printGameMode($mode){
     if($mode == "pvp"){
       echo "Player #1 as [X]\nPlayer #2 as [O]\n";
     }else{
@@ -45,8 +42,7 @@ class View{
     }
   }
 
-  function printBoard(){
-    $board = $this->model->getBoard();
+  function printBoard($board){
     foreach ($board as &$row){
       foreach ($row as &$cell) {
         echo "| $cell ";
@@ -55,7 +51,8 @@ class View{
     }
   }
 
-  function printTurn($symbol){
+  function printTurn($symbol, $board){
+    $this->printBoard($board);
     echo "\n$symbol's turn\n";
   }
 
@@ -70,14 +67,13 @@ class View{
     return $playerSelection;
   }
 
-  function printEndGame(){
-    $winner = $this->model->getWinner();
+  function printEndGame($winner, $board){
     if($winner == "tie"){
       echo "Game ended in a tie!\n";
-      $this->printBoard();
+      $this->printBoard($board);
     }else{
       echo "$winner Wins !!\n";
-      $this->printBoard();
+      $this->printBoard($board);
     }
   }
 
