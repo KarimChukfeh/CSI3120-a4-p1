@@ -3,15 +3,15 @@
 
 # [1] TicTacToe console game in php
 ```bash
-php TicTacToe/TicTacToe.php
+php TicTacToe.php
 ```
 
 # [2] Eight Queens Placement in php
 ```bash
-php Queens/Queens.php
+php Queens.php
 ```
 
 # [3] Estimating Pi using random point circle to square ratio in php
 ```bash
-php Pi/Pi.php
+php Pi.php
 ```
