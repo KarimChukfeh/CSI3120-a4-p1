@@ -1,5 +1,5 @@
 ## PHP Solution to Part 1 of of Assignment 3 for CSI3130 Fall 2017
-### Requirements: PHP
+### Requirements: PHP 7
 
 # [1] TicTacToe console game in php
 ```bash
