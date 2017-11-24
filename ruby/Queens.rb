@@ -1,4 +1,3 @@
-
 @board = Array.new(64, '-')
 
 def printBoard()
