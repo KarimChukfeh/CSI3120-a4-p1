@@ -1,5 +1,5 @@
 ## PHP Solution to Part 1 of of Assignment 3 for CSI3130 Fall 2017
-### Requirements: Ruby ruby 2.4.2
+### Requirements: Ruby 2.4.2
 
 # [1] TicTacToe console game in ruby
 ```bash

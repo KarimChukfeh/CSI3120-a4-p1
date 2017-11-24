@@ -1,5 +1,5 @@
 def inCircle(x,y)
-   if ((x-1).abs ** 2) + ((y-1).abs ** 2) < (1 ** 2)
+   if (((x-1).abs ** 2) + ((y-1).abs ** 2)) < (1 ** 2)
      true
    else
      false
