@@ -2,10 +2,10 @@
 ## Tic Tac Toe, 8x8 Queens, and Pi estimation in PHP and in Ruby
 
 ### Contributors
-#### Judah Olotu 8448799
-#### Karim Chukfeh 6694525
-#### Kritika Wadhera 8234314
-#### Stephanie Giang 8311427
+#### Judah Olotu 
+#### Karim Chukfeh 
+#### Kritika Wadhera 
+#### Stephanie Giang 
 
 ## (1) PHP 7.1
 See the php directory
